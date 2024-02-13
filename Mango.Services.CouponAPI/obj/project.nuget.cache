@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ruud/dcrXiVVV1vwfsdE17JP6al/zX91g6tL9DRy3wLp66YVD+SOfkyu4maklTkRFKQnGjGHSSyj2+rri8mZ6Q==",
+  "dgSpecHash": "itAaP0S7SBw5Sh/8O0a0Urx66HiKbVrwjggR8rhOZgnikNSYmEWNhxg88iz87atvGmYx3YEdcSBVRPjhiEhKwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andrew\\source\\repos\\Mango\\Mango.Services.CouponAPI\\Mango.Services.CouponAPI.csproj",
+  "projectFilePath": "C:\\MyCode\\Mango\\Mango.Services.CouponAPI\\Mango.Services.CouponAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andrew\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\andrew\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
@@ -84,5 +84,12 @@
     "C:\\Users\\andrew\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\andrew\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\MyCode\\Mango\\Mango.Services.CouponAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -4237,11 +4237,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andrew\\source\\repos\\Mango\\Mango.Services.CouponAPI\\Mango.Services.CouponAPI.csproj",
+      "projectUniqueName": "C:\\MyCode\\Mango\\Mango.Services.CouponAPI\\Mango.Services.CouponAPI.csproj",
       "projectName": "Mango.Services.CouponAPI",
-      "projectPath": "C:\\Users\\andrew\\source\\repos\\Mango\\Mango.Services.CouponAPI\\Mango.Services.CouponAPI.csproj",
+      "projectPath": "C:\\MyCode\\Mango\\Mango.Services.CouponAPI\\Mango.Services.CouponAPI.csproj",
       "packagesPath": "C:\\Users\\andrew\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andrew\\source\\repos\\Mango\\Mango.Services.CouponAPI\\obj\\",
+      "outputPath": "C:\\MyCode\\Mango\\Mango.Services.CouponAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\andrew\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4323,5 +4323,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\MyCode\\Mango\\Mango.Services.CouponAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
