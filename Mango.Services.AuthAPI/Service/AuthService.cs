@@ -13,13 +13,16 @@ namespace Mango.Services.AuthAPI.Service
         private readonly AppDbContext _db;
         private readonly UserManager<ApplicationUsers> _userManger;
         private readonly RoleManager<IdentityRole> _roleManger;
+        private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
         //dependency injection 
         public AuthService(AppDbContext db,
+            IJwtTokenGenerator jwtTokenGenerator,
             UserManager<ApplicationUsers> userManager,
             RoleManager<IdentityRole> roleManger)
         {
             _db = db;
+            _jwtTokenGenerator = jwtTokenGenerator;
             _userManger = userManager;
             _roleManger = roleManger;
         }
@@ -68,10 +71,58 @@ namespace Mango.Services.AuthAPI.Service
             return "Error encountered";
         }
 
-        public Task<LoginRequestDto> Login(LoginRequestDto loginRequestDto)
+        public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
         {
-            throw new NotImplementedException();
+            var user = _db.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == loginRequestDto.UserName.ToLower());
+
+            bool isValid = await _userManger.CheckPasswordAsync(user, loginRequestDto.Password);
+
+            if (user == null || isValid == false)
+            {
+                return new LoginResponseDto()
+                {
+                    User = null,
+                    Token = ""
+                };               
+            }
+
+            //if user is found, generate JWT Token
+            var token = _jwtTokenGenerator.GenerateToken(user);
+
+            UserDto userDto = new()
+            {
+                Email = user.Email,
+                Id = user.Id,
+                Name = user.Name,
+                PhoneNumber = user.PhoneNumber,
+            };
+
+            LoginResponseDto loginResponseDto = new LoginResponseDto()
+            {
+                User = userDto,
+                Token = token
+            };
+
+            return loginResponseDto;
         }
 
+        public async Task<bool> AssignRole(string email, string roleName)
+        {
+            var user = _db.ApplicationUsers.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+
+            if(user != null)
+            {
+                if (!_roleManger.RoleExistsAsync(roleName).GetAwaiter().GetResult())
+                {
+                    //create role if it does not exist
+                    _roleManger.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
+                }
+
+                await _userManger.AddToRoleAsync(user, roleName);
+                return true;
+            }
+
+            return false;
+        }
     }
 }
